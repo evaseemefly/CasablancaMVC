@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Basic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>你好<span data-bind="text:name"></span></h2>
+@section scripts{
+    <script>
+        function ViewModel() {
+            this.name = 'Casablanca';
+        };
+        var viewModel = new ViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+    }
+

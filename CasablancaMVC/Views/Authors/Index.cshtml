@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CasablancaMVC.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var queryOptions = (CasablancaMVC.Models.QueryOptions)ViewBag.QueryOptions;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*table-striped是斑马线效果*@
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.FirstName)*@
+            @*"<a href=\"/Authors?SortField =FirstName&SortOrder =ASC\">FirstName<span class=\"glyphicon glyphicon-sort\"></span></a>"*@
+            @Html.BuildSortableLink("FirstName","Index","FirstName",queryOptions)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.LastName)*@
+            @Html.BuildSortableLink("LastName", "Index", "LastName", queryOptions)
+        </th>
+        <th>
+            Actions
+        </th>
+        <th></th>
+    </tr>
+    <tbody data-bind="foreach:authors">
+        <tr>
+            <td data-bind="text:FirstName"></td>
+            <td data-bind="text:LastName"></td>
+            <td>
+                <a data-bind="attr:{href:'@Url.Action("Details")/'+Id}" class="btn btn-info">细节</a>
+                <a data-bind="attr:{href:'@Url.Action("Edit")/'+Id}" class="btn btn-warning">修改</a>
+                <a data-bind="attr:{href:'@Url.Action("Delete")/'+Id}" class="btn btn-danger">删除</a>
+            </td>
+        </tr>
+    </tbody>
+@*@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Biography)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}*@
+
+</table>
+@Html.BuildNextPreviousLinks(queryOptions,"Index")
+@section scripts{
+    <script>
+        function ViewModel(authors) {
+            var self = this;
+            self.authors = authors;
+        };
+
+        var viewModel = new ViewModel(@Html.HtmlConvertToJson(Model));
+       
+        ko.applyBindings(viewModel);
+    </script>
+    }

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "TestIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+名字是<span data-bind="text:personName"></span>
+
+@section scripts{
+    <script>
+
+        var myViewModel = {
+            personName: 'bob',
+            personAge: 123
+        }
+
+        $(function () {
+            ko.applyBindings(myViewModel);
+        })
+    </script>
+}
+

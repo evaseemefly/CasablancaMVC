@@ -26,7 +26,6 @@
         <th>
             Actions
         </th>
-        <th></th>
     </tr>
     <tbody data-bind="foreach:authors">
         <tr>
@@ -39,27 +38,14 @@
             </td>
         </tr>
     </tbody>
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Biography)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}*@
-
 </table>
 @Html.BuildNextPreviousLinks(queryOptions,"Index")
+<nav >
+    <ul class="pager">
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
 @section scripts{
     <script>
         function ViewModel(authors) {

@@ -87,18 +87,30 @@ using CasablancaMVC.Models;
     {
         var urlHelper = new UrlHelper(htmlhelper.ViewContext.RequestContext);
 
-        return new MvcHtmlString(string.Format(
+        string result_html = string.Format(
             "<nav>" +
-            "  <ul class=\"pager\">" +
-                "<li class=\"perious {0}\">{1}</li>" +
+            "<ul class=\"pager\">" +
+                "<li class=\"previous {0}\">{1}</li>" +
                 "<li class=\"next {2}\">{3}</li>" +
-               "</ul>" +
+            "</ul>" +
             "</nav>",
             IsPreviousDisabled(queryOptions),
             BuildPreviousLink(urlHelper, queryOptions, actionName),
             IsNextDisabled(queryOptions),
-            BuildNextLink(urlHelper, queryOptions, actionName)
-            ));
+            BuildNextLink(urlHelper, queryOptions, actionName));
+        return new MvcHtmlString(result_html);
+        //return new MvcHtmlString(string.Format(
+        //    "<nav>" +
+        //    "  <ul class=\"pager\">" +
+        //        "<li class=\"perious {0}\">{1}</li>" +
+        //        "<li class=\"next {2}\">{3}</li>" +
+        //       "</ul>" +
+        //    "</nav>",
+        //    IsPreviousDisabled(queryOptions),
+        //    BuildPreviousLink(urlHelper, queryOptions, actionName),
+        //    IsNextDisabled(queryOptions),
+        //    BuildNextLink(urlHelper, queryOptions, actionName)
+        //    ));
     }
 
     private static string IsPreviousDisabled(QueryOptions queryOptions)

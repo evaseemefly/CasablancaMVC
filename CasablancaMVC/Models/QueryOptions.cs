@@ -12,7 +12,7 @@ namespace CasablancaMVC.Models
             SortField = "Id";
             SortOrder = SortOrder.ASC;
             CurrentPage = 1;
-            PageSize = 1;
+            PageSize = 10;
         }
 
         /// <summary>
@@ -25,10 +25,19 @@ namespace CasablancaMVC.Models
         /// </summary>
         public SortOrder SortOrder { get; set; }
 
+        /// <summary>
+        /// 当前页
+        /// </summary>
         public int CurrentPage { get; set; }
 
+        /// <summary>
+        /// 总页数
+        /// </summary>
         public int TotalPages { get; set; }
 
+        /// <summary>
+        /// 页容量
+        /// </summary>
         public int PageSize { get; set; }
 
         public string Sort

@@ -93,7 +93,7 @@ namespace CasablancaMVC.Controllers
             if (ModelState.IsValid)
             {
                 db.Authors.Add(author);
-                db.SaveChanges();
+               int result= db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

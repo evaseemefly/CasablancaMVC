@@ -99,3 +99,8 @@ D:\02学习\01源码\CasablancaMVC\CasablancaMVC\CasablancaMVC\bin\zh-Hans\Micro
 D:\02学习\01源码\CasablancaMVC\CasablancaMVC\CasablancaMVC\obj\Debug\CasablancaMVC.csprojResolveAssemblyReference.cache
 D:\02学习\01源码\CasablancaMVC\CasablancaMVC\CasablancaMVC\obj\Debug\CasablancaMVC.dll
 D:\02学习\01源码\CasablancaMVC\CasablancaMVC\CasablancaMVC\obj\Debug\CasablancaMVC.pdb
+D:\02编程\2016年\01协同开发\CasablancaMVC\CasablancaMVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\02编程\2016年\01协同开发\CasablancaMVC\CasablancaMVC\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\02编程\2016年\01协同开发\CasablancaMVC\CasablancaMVC\bin\roslyn\System.Collections.Immutable.dll
+D:\02编程\2016年\01协同开发\CasablancaMVC\CasablancaMVC\bin\roslyn\System.Reflection.Metadata.dll
+D:\02编程\2016年\01协同开发\CasablancaMVC\CasablancaMVC\bin\roslyn\VBCSCompiler.exe

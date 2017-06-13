@@ -7,7 +7,8 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm("Create","Authors",FormMethod.Post,new { data_bind="submit:validateAndSave"}))
+@using (Html.BeginForm("Create","Authors",FormMethod.Post,
+    new { data_bind="submit:validateAndSave"}))
 {
     @Html.AntiForgeryToken()
     
@@ -20,7 +21,8 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FirstName,
                new {
-                   htmlAttributes = new { @class = "form-control",data_bind="value:author.firstName" } })
+                   htmlAttributes = new { @class = "form-control",
+                       data_bind ="value:author.firstName" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>

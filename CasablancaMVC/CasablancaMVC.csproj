@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KnockoutController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\BookContext.cs" />
     <Compile Include="DAL\BookInitializer.cs" />
@@ -306,6 +307,8 @@
     <Content Include="Views\Authors\Edit.cshtml" />
     <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\Authors\Index-默认生成.cshtml" />
+    <Content Include="Views\Authors\TestIndex.cshtml" />
+    <Content Include="Views\Knockout\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

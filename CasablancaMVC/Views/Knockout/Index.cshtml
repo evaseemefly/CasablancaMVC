@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+名字是<span data-bind="text:personName"></span>
+测试区域名字为<span id="test" data-bind="text:personName"></span>
+
+@section scripts{
+    <script>
+
+        //var myViewModel = {
+        //    personName: 'bob',
+        //    personAge: 123
+        //}
+
+        var myViewModel = {
+            personName: ko.observable('Bob'),
+            personAge: ko.observable(123)
+        };
+
+        $(function () {
+            ko.applyBindings(myViewModel);
+            //document.getElementById('test')
+            ko.applyBindings(myViewModel,$("#test")[0]);
+            
+        })
+    </script>
+}
+

@@ -23,6 +23,11 @@ namespace CasablancaMVC.Controllers
         //    return View(db.Authors.ToList());
         //}
 
+        public ActionResult TestIndex()
+        {
+            return View();
+        }
+
         public ActionResult Index([Form]QueryOptions queryOptions)
         {
             /*

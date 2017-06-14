@@ -262,6 +262,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ViewModels\AuthorFormViewModel.js" />
+    <Content Include="Scripts\ViewModels\AuthorIndexViewModel.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -299,7 +300,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Basic.cshtml" />
     <Content Include="Views\Home\Advanced.cshtml" />
-    <Content Include="Views\Authors\Create.cshtml" />
+    <Content Include="Views\Authors\Form.cshtml" />
     <Content Include="Views\Authors\Delete.cshtml" />
     <Content Include="Views\Authors\Details.cshtml" />
     <Content Include="Views\Authors\Edit.cshtml" />

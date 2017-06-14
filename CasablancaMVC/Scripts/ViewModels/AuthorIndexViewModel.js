@@ -1,0 +1,24 @@
+﻿function AuthorIndexViewModel(authors) {
+
+    var self = this;
+
+    self.authors = authors;
+
+    
+    //用户单击delete时被调用
+    self.showDeleteModel = function (data, event) {
+        self.sending = ko.observable(false);
+
+        $.get($(event.target).attr('herf'), function (d) {
+            $('.body-content').prepend(d);
+            $('#deleteModal').modal('show');
+
+            ko.applyBindings(self, document.getElementById('deleteModal'));
+        });
+    };
+
+    self.deleteAuthor = function (form) {
+        self.sending(true);
+        return true;
+    }
+}

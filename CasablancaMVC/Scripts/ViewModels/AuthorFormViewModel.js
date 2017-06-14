@@ -1,13 +1,17 @@
-﻿function AuthorFormViewModel() {
+﻿function AuthorFormViewModel(author) {
     var self = this;
 
     self.saveCompleted = ko.observable(false);
     self.sending = ko.observable(false);
 
+    //新增内容
+    self.isCreating = author.id == 0;
+
     self.author = {
-        firstName: ko.observable(),
-        lastName: ko.observable(),
-        biography: ko.observable()
+        id:author.id,
+        firstName: ko.observable(author.firstName),
+        lastName: ko.observable(author.lastName),
+        biography: ko.observable(author.biography)
     };
 
     self.validateAndSave = function (form) {
@@ -22,7 +26,8 @@
 
         //绑定提交
         $.ajax({
-            url: 'Create',
+            //url: 'Create',
+            url:(self.isCreating) ? 'Create':'Edit',
             type: 'post',
             contentType: 'application/x-www-form-urlencoded',
             data: ko.toJS(self.author)
@@ -40,7 +45,11 @@
         //向用户显示成功提示消息后
         //停止1秒，并重新跳转至authors列表页面
         setTimeout(function () {
-            location.href = './';
+            if (self.isCreating)
+                location.href = './';
+            else
+                location.href='../'
+            //location.href = './';
         }, 1000);
     };
 

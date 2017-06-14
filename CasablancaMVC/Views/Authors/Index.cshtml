@@ -17,11 +17,11 @@
         <th>
             @*@Html.DisplayNameFor(model => model.FirstName)*@
             @*"<a href=\"/Authors?SortField =FirstName&SortOrder =ASC\">FirstName<span class=\"glyphicon glyphicon-sort\"></span></a>"*@
-            @Html.BuildSortableLink("FirstName","Index","FirstName",queryOptions)
+            @Html.BuildSortableLink("FirstName","Index","firstName",queryOptions)
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.LastName)*@
-            @Html.BuildSortableLink("LastName", "Index", "LastName", queryOptions)
+            @Html.BuildSortableLink("LastName", "Index", "lastName", queryOptions)
         </th>
         <th>
             Actions
@@ -29,12 +29,12 @@
     </tr>
     <tbody data-bind="foreach:authors">
         <tr>
-            <td data-bind="text:FirstName"></td>
-            <td data-bind="text:LastName"></td>
+            <td data-bind="text:firstName"></td>
+            <td data-bind="text:lastName"></td>
             <td>
-                <a data-bind="attr:{href:'@Url.Action("Details")/'+Id}" class="btn btn-info">细节</a>
-                <a data-bind="attr:{href:'@Url.Action("Edit")/'+Id}" class="btn btn-warning">修改</a>
-                <a data-bind="attr:{href:'@Url.Action("Delete")/'+Id}" class="btn btn-danger">删除</a>
+                <a data-bind="attr:{href:'@Url.Action("Details")/'+id}" class="btn btn-info">细节</a>
+                <a data-bind="attr:{href:'@Url.Action("Edit")/'+id}" class="btn btn-warning">修改</a>
+                <a data-bind="click:$parent.showdeletemodal,attr:{href:'@Url.Action("Delete")/'+id}" class="btn btn-danger">删除</a>
             </td>
         </tr>
     </tbody>

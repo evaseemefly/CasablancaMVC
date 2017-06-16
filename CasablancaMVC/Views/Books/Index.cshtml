@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CasablancaMVC.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var queryOptions =(CasablancaMVC.Models.QueryOptions)ViewBag.QueryOptions;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.BuildSortableLink("Title", "Index", "Tile", queryOptions);*@
+                @Html.DisplayNameFor(model => model.Author.FirstName)
+            </th>
+            <th>
+                @Html.BuildSortableLink("Title", "Index", "Tile", queryOptions);
+                @*@Html.DisplayNameFor(model => model.Title)*@
+            </th>
+            <th>
+                @Html.BuildSortableLink("Isbn", "Index", "Isbn", queryOptions);
+                @*@Html.DisplayNameFor(model => model.Isbn)*@
+            </th>
+            <th>
+                @Html.BuildSortableLink("Synopsis", "Index", "Synopsis", queryOptions);
+                @*@Html.DisplayNameFor(model => model.Synopsis)*@
+            </th>
+            <th>
+                @Html.BuildSortableLink("Description", "Index", "Description", queryOptions);
+                @*@Html.DisplayNameFor(model => model.Description)*@
+            </th>
+            <th>
+                @Html.BuildSortableLink("ImageUrl", "Index", "ImageUrl", queryOptions);
+                @*@Html.DisplayNameFor(model => model.ImageUrl)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody data-bind="foreach:books">
+        <tr>
+            <td data-bind="text:Title"></td>
+            <td data-bind="text:Isbn"></td>
+            <td data-bind="text:Synopsis"></td>
+            <td data-bind="text:Description"></td>
+            <td data-bind="text:ImageUrl"></td>
+            <td>
+                <a data-bind="attr:{href:'@Url.Action("Details")/'+Id}" class="btn btn-info">详细</a>
+                <a data-bind="attr:{href:'@Url.Action("Edit")/'+Id}" class="btn btn-success">修改</a>
+                <a data-bind="attr:{href:'@Url.Action("Delete")/'+Id}" class="btn btn-danger">删除</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+@*生成上一页，下一页菜单*@
+@Html.BuildNextPreviousLinks(queryOptions, "Index")
+@section scripts{
+    <script>
+        function ViewModel(books){
+            var self=this;
+
+            self.books=books;
+        }
+
+        var viewModel=new ViewModel(@Html.HtmlConvertToJson(Model));
+        ko.applyBindings(viewModel);
+    </script>
+    }

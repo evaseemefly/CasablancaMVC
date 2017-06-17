@@ -16,7 +16,8 @@
         //synopsis: ko.observable(book.synopsis),
         //description: ko.observable(book.description),
         //imageUrl: ko.observable(book.imageUrl)
-        id:book.id,
+        // id:book.id,
+        id:ko.observable(),
         title: ko.observable(),
         isbn: ko.observable(),
         synopsis: ko.observable(),

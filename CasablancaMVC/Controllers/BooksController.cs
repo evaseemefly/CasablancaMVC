@@ -54,7 +54,7 @@ namespace CasablancaMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.AuthorId = new SelectList(db.Authors, "Id", "FirstName");
-            return View();
+            return View("Form",new Book());
         }
 
         // POST: Books/Create
@@ -72,7 +72,7 @@ namespace CasablancaMVC.Controllers
             }
 
             ViewBag.AuthorId = new SelectList(db.Authors, "Id", "FirstName", book.AuthorId);
-            return View(book);
+            return View("Form",book);
         }
 
         // GET: Books/Edit/5

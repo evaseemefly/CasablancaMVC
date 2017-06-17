@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CasablancaMVC.DAL;
 using CasablancaMVC.Models;
+using CasablancaMVC.ViewModel;
 using System.Web.ModelBinding;
 
 namespace CasablancaMVC.Controllers
@@ -62,8 +63,11 @@ namespace CasablancaMVC.Controllers
             queryOptions.TotalPages = (int)Math.Ceiling((double)db.Authors.Count() / queryOptions.PageSize);
 
             ViewBag.QueryOptions = queryOptions;
-
-            return View(authors.ToList());
+            //新版本的autoMapper初始化起改为使用以下方式初始化
+            AutoMapper.Mapper.Initialize(cfg=>cfg.CreateMap<Author,AuthorViewModel>());
+           var list= AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(authors.ToList());
+            return View(list);
+            //return View(authors.ToList());
         }
 
 
@@ -86,7 +90,8 @@ namespace CasablancaMVC.Controllers
         public ActionResult Create()
         {
             //return View();
-            return View("Form", new Author());
+            //return View("Form", new Author());
+            return View("Form", new AuthorViewModel());
         }
 
         // POST: Authors/Create
@@ -94,11 +99,14 @@ namespace CasablancaMVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Biography")] Author author)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Biography")] AuthorViewModel/*Author*/ author)
         {
             if (ModelState.IsValid)
             {
-                db.Authors.Add(author);
+                //初始化autoMapper
+                AutoMapper.Mapper.Initialize(cfg => cfg.CreateMap<AuthorViewModel, Author>());
+                db.Authors.Add(AutoMapper.Mapper.Map<AuthorViewModel, Author>(author));
+               // db.Authors.Add(author);
                int result= db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -118,8 +126,10 @@ namespace CasablancaMVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            AutoMapper.Mapper.Initialize(cfg => cfg.CreateMap<Author, AuthorViewModel>());
             //return View(author);
-            return View("Form", author);
+            return View("Form", AutoMapper.Mapper.Map<Author,AuthorViewModel >(author)/*author*/);
         }
 
         // POST: Authors/Edit/5
@@ -127,11 +137,12 @@ namespace CasablancaMVC.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Biography")] Author author)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Biography")] AuthorViewModel/*Author*/ author)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(author).State = EntityState.Modified;
+                AutoMapper.Mapper.Initialize(cfg => cfg.CreateMap<AuthorViewModel, Author>());
+                db.Entry(AutoMapper.Mapper.Map<AuthorViewModel,Author>(author)/*author*/).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -150,7 +161,9 @@ namespace CasablancaMVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(author);
+            AutoMapper.Mapper.Initialize(cfg => cfg.CreateMap<Author, AuthorViewModel>());
+
+            return View(AutoMapper.Mapper.Map<Author,AuthorViewModel>(author)/*author*/);
         }
 
         // POST: Authors/Delete/5

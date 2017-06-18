@@ -1,10 +1,12 @@
 ﻿@using CasablancaMVC.ViewModel;
-@model IEnumerable<AuthorViewModel>
+@model ResultList<AuthorViewModel>
+@*@model IEnumerable<AuthorViewModel>*@
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var queryOptions = (CasablancaMVC.Models.QueryOptions)ViewBag.QueryOptions;
+    var queryOptions = Model.QueryOptions;
+    //var queryOptions = (CasablancaMVC.Models.QueryOptions)ViewBag.QueryOptions;
 }
 
 <h2>Index</h2>
@@ -19,7 +21,9 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstName)*@
                 @*"<a href=\"/Authors?SortField =FirstName&SortOrder =ASC\">FirstName<span class=\"glyphicon glyphicon-sort\"></span></a>"*@
-                @Html.BuildSortableLink("FirstName", "Index", "firstName", queryOptions)
+                @*2017-06-18注释掉此部分*@
+                @*@Html.BuildSortableLink("FirstName", "Index", "firstName", queryOptions)*@
+                @Html.build
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.LastName)*@

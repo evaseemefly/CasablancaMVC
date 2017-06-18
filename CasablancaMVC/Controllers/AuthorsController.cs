@@ -31,6 +31,7 @@ namespace CasablancaMVC.Controllers
 
         public ActionResult Index([Form]QueryOptions queryOptions)
         {
+            #region 
             /*
                 1 首次打开页面时：
                 queryOptions
@@ -52,6 +53,8 @@ namespace CasablancaMVC.Controllers
   "Sort": "FirstName DESC"
 }
             */
+            #endregion
+
             //var list_temp= db.Authors.ToList();
             var start = (queryOptions.CurrentPage - 1) * queryOptions.PageSize;
 
@@ -66,7 +69,12 @@ namespace CasablancaMVC.Controllers
             //新版本的autoMapper初始化起改为使用以下方式初始化
             AutoMapper.Mapper.Initialize(cfg=>cfg.CreateMap<Author,AuthorViewModel>());
            var list= AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(authors.ToList());
-            return View(list);
+            return View(new ResultList<AuthorViewModel>
+            {
+                QueryOptions = queryOptions,
+                Result = AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(authors.ToList())
+            });
+            //return View(list);
             //return View(authors.ToList());
         }
 

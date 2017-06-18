@@ -1,9 +1,12 @@
-﻿@model IEnumerable<CasablancaMVC.Models.Author>
+﻿@using CasablancaMVC.ViewModel;
+@model ResultList<AuthorViewModel>
+@*@model IEnumerable<AuthorViewModel>*@
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var queryOptions = (CasablancaMVC.Models.QueryOptions)ViewBag.QueryOptions;
+    var queryOptions = Model.QueryOptions;
+    //var queryOptions = (CasablancaMVC.Models.QueryOptions)ViewBag.QueryOptions;
 }
 
 <h2>Index</h2>
@@ -12,34 +15,41 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 @*table-striped是斑马线效果*@
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>
-            @*@Html.DisplayNameFor(model => model.FirstName)*@
-            @*"<a href=\"/Authors?SortField =FirstName&SortOrder =ASC\">FirstName<span class=\"glyphicon glyphicon-sort\"></span></a>"*@
-            @Html.BuildSortableLink("FirstName","Index","FirstName",queryOptions)
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.LastName)*@
-            @Html.BuildSortableLink("LastName", "Index", "LastName", queryOptions)
-        </th>
-        <th>
-            Actions
-        </th>
-    </tr>
-    <tbody data-bind="foreach:authors">
+<div style="display:none" data-bind="visible:authors.length>0">
+    <table class="table table-bordered table-striped">
         <tr>
-            <td data-bind="text:FirstName"></td>
-            <td data-bind="text:LastName"></td>
-            <td>
-                <a data-bind="attr:{href:'@Url.Action("Details")/'+Id}" class="btn btn-info">细节</a>
-                <a data-bind="attr:{href:'@Url.Action("Edit")/'+Id}" class="btn btn-warning">修改</a>
-                <a data-bind="attr:{href:'@Url.Action("Delete")/'+Id}" class="btn btn-danger">删除</a>
-            </td>
+            <th>
+                @*@Html.DisplayNameFor(model => model.FirstName)*@
+                @*"<a href=\"/Authors?SortField =FirstName&SortOrder =ASC\">FirstName<span class=\"glyphicon glyphicon-sort\"></span></a>"*@
+                @*2017-06-18注释掉此部分*@
+                @*@Html.BuildSortableLink("FirstName", "Index", "firstName", queryOptions)*@
+                @Html.BuildKnockoutSortableLink("First Name","Index","firstName")
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.LastName)*@
+                @*@Html.BuildSortableLink("LastName", "Index", "lastName", queryOptions)*@
+                @Html.BuildKnockoutSortableLink("Last Name", "Index", "lastName")
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
-    </tbody>
-</table>
-@Html.BuildNextPreviousLinks(queryOptions,"Index")
+        <tbody data-bind="foreach:authors">
+            <tr>
+                <td data-bind="text:firstName"></td>
+                <td data-bind="text:lastName"></td>
+                <td>
+                    <a data-bind="attr:{href:'@Url.Action("Details")/'+id}" class="btn btn-info">细节</a>
+                    <a data-bind="attr:{href:'@Url.Action("Edit")/'+id}" class="btn btn-warning">修改</a>
+                    <a data-bind="click:$parent.showDeleteModal,attr:{href:'@Url.Action("Delete")/'+id}" class="btn btn-danger">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@*@Html.BuildNextPreviousLinks(queryOptions,"Index")*@
+@Html.BuildKnockoutNextPreviousLink("Index");
 <nav >
     <ul class="pager">
         <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
@@ -47,13 +57,16 @@
     </ul>
 </nav>
 @section scripts{
+    @Scripts.Render("/Scripts/ViewModels/AuthorIndexViewModel.js")
     <script>
-        function ViewModel(authors) {
-            var self = this;
-            self.authors = authors;
-        };
+        //function ViewModel(authors) {
+        //    var self = this;
+        //    self.authors = authors;
+        //};
+        var viewModel = new AuthorIndexViewModel(@Html.HtmlConvertToJson(Model));
 
-        var viewModel = new ViewModel(@Html.HtmlConvertToJson(Model));
+
+        @*var viewModel = new ViewModel(@Html.HtmlConvertToJson(Model));*@
        
         ko.applyBindings(viewModel);
     </script>

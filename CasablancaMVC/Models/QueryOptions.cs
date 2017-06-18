@@ -5,6 +5,9 @@ using System.Web;
 
 namespace CasablancaMVC.Models
 {
+    /// <summary>
+    /// 查询对象
+    /// </summary>
     public class QueryOptions
     {
         public QueryOptions()

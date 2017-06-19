@@ -17,7 +17,7 @@
 
     self.updateResultList = function (resultList) {
         self.queryOptions.currentPage(resultList.queryOptions.currentPage);
-        self.queryOptions.totalPage(resultList.queryOptions.totalPage);
+        self.queryOptions.totalPages(resultList.queryOptions.totalPages);
         self.queryOptions.pageSize(resultList.queryOptions.pageSize);
         self.queryOptions.sortField(resultList.queryOptions.sortField);
         self.queryOptions.sortOrder(resultList.queryOptions.sortOrder);

@@ -2,7 +2,7 @@
 
     var self = this;
 
-    self.paginService = new PagingService(resultList);
+    self.pagingService = new PagingService(resultList);
     //self.authors = authors;
 
     

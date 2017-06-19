@@ -15,7 +15,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 @*table-striped是斑马线效果*@
-<div style="display:none" data-bind="visible:authors.length>0">
+<div style="display:none"data-bind="visible:pagingService.entities().length>0" @*data-bind="visible:authors.length>0"*@>
     <table class="table table-bordered table-striped">
         <tr>
             <th>
@@ -50,12 +50,12 @@
 
 @*@Html.BuildNextPreviousLinks(queryOptions,"Index")*@
 @Html.BuildKnockoutNextPreviousLink("Index");
-<nav >
+@*<nav >
     <ul class="pager">
         <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
         <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
     </ul>
-</nav>
+</nav>*@
 @section scripts{
     @Scripts.Render("/Scripts/Servies/PagingService.js"," /Scripts/ViewModels/AuthorIndexViewModel.js")
     <script>

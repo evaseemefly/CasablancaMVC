@@ -1,8 +1,9 @@
-﻿function AuthorIndexViewModel(authors) {
+﻿function AuthorIndexViewModel(/*authors*/resultList) {
 
     var self = this;
 
-    self.authors = authors;
+    self.paginService = new PagingService(resultList);
+    //self.authors = authors;
 
     
     //用户单击delete时被调用

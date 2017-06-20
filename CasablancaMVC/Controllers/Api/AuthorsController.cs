@@ -32,12 +32,12 @@ namespace CasablancaMVC.Controllers.Api
 
             AutoMapper.Mapper.Initialize(cfg => cfg.CreateMap<Author, AuthorViewModel>());
 
-            return new ResultList<AuthorViewModel>
-            {
-                QueryOptions = queryOptions,
-                Result = AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(author.ToList())
-            };
-
+            //return new ResultList<AuthorViewModel>
+            //{
+            //    QueryOptions = queryOptions,
+            //    Result = AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(author.ToList())
+            //};
+            return new ResultList<AuthorViewModel>(AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(author.ToList()), queryOptions);
         }
 
         [ResponseType(typeof(void))]

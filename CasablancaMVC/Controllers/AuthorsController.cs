@@ -11,6 +11,7 @@ using CasablancaMVC.DAL;
 using CasablancaMVC.Models;
 using CasablancaMVC.ViewModel;
 using System.Web.ModelBinding;
+using CasablancaMVC.Filters;
 
 namespace CasablancaMVC.Controllers
 {
@@ -29,6 +30,7 @@ namespace CasablancaMVC.Controllers
             return View();
         }
 
+        [GenerateResultListFilter(typeof(Author),typeof(AuthorViewModel))]
         public ActionResult Index([Form]QueryOptions queryOptions)
         {
             #region 
@@ -69,11 +71,14 @@ namespace CasablancaMVC.Controllers
             //新版本的autoMapper初始化起改为使用以下方式初始化
             AutoMapper.Mapper.Initialize(cfg=>cfg.CreateMap<Author,AuthorViewModel>());
            var list= AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(authors.ToList());
-            return View(new ResultList<AuthorViewModel>
-            {
-                QueryOptions = queryOptions,
-                Result = AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(authors.ToList())
-            });
+
+            ViewData["QueryOptions"] = queryOptions;
+            return View(authors.ToList());
+            //return View(new ResultList<AuthorViewModel>
+            //{
+            //    QueryOptions = queryOptions,
+            //    Result = AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(authors.ToList())
+            //});
             //return View(list);
             //return View(authors.ToList());
         }

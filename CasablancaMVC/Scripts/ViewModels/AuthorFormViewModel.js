@@ -27,10 +27,14 @@
         //绑定提交
         $.ajax({
             //url: 'Create',
-            url:(self.isCreating) ? 'Create':'Edit',
-            type: 'post',
-            contentType: 'application/x-www-form-urlencoded',
-            data: ko.toJS(self.author)
+            ur:'/api/authors',
+            //url:(self.isCreating) ? 'Create':'Edit',
+            //type: 'post',
+            type:(self.isCreating)?'post':'put',
+            //contentType: 'application/x-www-form-urlencoded',
+            contentType: 'application/json',
+            data:ko.toJSON(self.author)
+            //data: ko.toJS(self.author)
         })
         .success(self.successfulSave)   //成功后的回调函数
         .error(self.errorSave)          //请求失败时的回调函数

@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Threading.Tasks;
+using CasablancaMVC.Filters;
 
 namespace CasablancaMVC.App_Start
 {
@@ -12,6 +13,9 @@ namespace CasablancaMVC.App_Start
     {
         public static void Register(HttpConfiguration config)
         {
+            //向过滤器列表中添加新的过滤器
+            config.Filters.Add(new ValidationActionFilterAttrribute());
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

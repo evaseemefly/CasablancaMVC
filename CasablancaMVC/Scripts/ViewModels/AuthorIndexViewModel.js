@@ -3,7 +3,7 @@
     var self = this;
 
     self.pagingService = new PagingService(resultList);
-    //self.authors = authors;
+    //self.authors = resultList.results;
 
     
     //用户单击delete时被调用

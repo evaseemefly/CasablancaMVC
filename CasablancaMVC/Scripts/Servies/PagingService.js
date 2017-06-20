@@ -1,6 +1,6 @@
 ﻿function PagingService(resultList) {
 
-    var sefl = this;
+    var self = this;
 
     //所有可监控的子属性
     //可动态更新的排序图标

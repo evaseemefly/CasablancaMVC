@@ -221,6 +221,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Behaviors\QueryOptionsCalculator.cs" />
     <Compile Include="Common\SerializationHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AuthorsController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Models\SortOrder.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthorService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AuthorViewModel.cs" />
     <Compile Include="ViewModel\ResultList.cs" />

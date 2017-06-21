@@ -232,6 +232,8 @@
     <Compile Include="DAL\BookContext.cs" />
     <Compile Include="DAL\BookInitializer.cs" />
     <Compile Include="Extension\HtmlHelperExtensions.cs" />
+    <Compile Include="Filters\BasicAuthenticationAttribute.cs" />
+    <Compile Include="Filters\BasicChallengeActionResult.cs" />
     <Compile Include="Filters\GenerateResultListFilterAttribute.cs" />
     <Compile Include="Filters\OnApiExceptionAttribute.cs" />
     <Compile Include="Filters\OnExceptionAttribute.cs" />
@@ -240,6 +242,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AuthenticatedUsers.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -247,6 +250,7 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\QueryOptions.cs" />
     <Compile Include="Models\SortOrder.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AuthorViewModel.cs" />

@@ -13,6 +13,11 @@ namespace CasablancaMVC.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 设置Route("About")可通过路由直接将它公开
+        /// </summary>
+        /// <returns></returns>
+        [Route("About")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +25,7 @@ namespace CasablancaMVC.Controllers
             return View();
         }
 
+        [Route("Contact")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -40,6 +40,19 @@ namespace CasablancaMVC.Controllers.Api
             return new ResultList<AuthorViewModel>(AutoMapper.Mapper.Map<List<Author>, List<AuthorViewModel>>(author.ToList()), queryOptions);
         }
 
+        public IHttpActionResult Get(int id)
+        {
+            Author author = db.Authors.Find(id);
+            if (author == null)
+            {
+                throw new System.Data.Entity.Core.ObjectNotFoundException(string.Format("未找到指定作者{0}", id));
+            }
+
+            AutoMapper.Mapper.Initialize(c => c.CreateMap<Author, AuthorViewModel>());
+
+            return Ok(AutoMapper.Mapper.Map<Author, AuthorViewModel>(author));
+        }
+
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(AuthorViewModel author)
         {

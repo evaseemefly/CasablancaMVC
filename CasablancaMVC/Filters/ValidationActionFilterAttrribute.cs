@@ -10,7 +10,7 @@ using System.Web.Http.Filters;
 namespace CasablancaMVC.Filters
 {
     /// <summary>
-    /// 
+    /// 对action进行验证（requeiered等操作）
     /// </summary>
     public class ValidationActionFilterAttrribute:ActionFilterAttribute
     {

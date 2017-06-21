@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using CasablancaMVC.Filters;
 
 namespace CasablancaMVC
 {
@@ -8,6 +9,7 @@ namespace CasablancaMVC
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new OnExceptionAttribute());
         }
     }
 }

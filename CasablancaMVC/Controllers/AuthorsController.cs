@@ -94,7 +94,8 @@ namespace CasablancaMVC.Controllers
             Author author = db.Authors.Find(id);
             if (author == null)
             {
-                return HttpNotFound();
+                throw new System.Data.Entity.Core.ObjectNotFoundException(string.Format("找不到指定作者，id为{0}", id));
+                //return HttpNotFound();
             }
             return View(author);
         }

@@ -15,7 +15,7 @@ namespace CasablancaMVC.App_Start
         {
             //向过滤器列表中添加新的过滤器
             config.Filters.Add(new ValidationActionFilterAttrribute());
-
+            config.Filters.Add(new OnApiExceptionAttribute());
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

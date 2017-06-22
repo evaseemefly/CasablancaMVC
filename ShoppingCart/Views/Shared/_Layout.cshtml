@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("购物车", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,12 +27,26 @@
                     <li>@Html.ActionLink("关于", "About", "Home")</li>
                     <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
                 </ul>
+                <div class="navbar-right" id="cart-details">
+                    @Html.Action("Summary","Carts")
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        @*well是bt中带有凹陷效果的容器*@
+        <div class="well well-lg col-lg-3">
+            @Html.Action("Menu", "Categories", 
+           new
+       {
+               selectedCategoryId=ViewBag.SelectedCategoryId!=null?
+               ViewBag.SelectedCategoryId:0
+       })
+        </div>
+        <div class="col-lg-9">
+            @RenderBody()
+        </div>        
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>

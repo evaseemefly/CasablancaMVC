@@ -126,8 +126,8 @@ namespace CasablancaMVC.Controllers
             //}
             //return View(author);
             #endregion
-
-            return View("Form", AutoMapper.Mapper.Map<Author, AuthorViewModel>(author));
+            var model = AutoMapper.Mapper.Map<Author, AuthorViewModel>(author);
+            return View("Form", model);
         }
 
         // GET: Authors/Create

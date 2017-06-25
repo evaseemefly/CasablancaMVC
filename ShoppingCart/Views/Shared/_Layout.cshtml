@@ -38,12 +38,11 @@
         @*well是bt中带有凹陷效果的容器*@
         <div class="well well-lg col-lg-3">
             @*请求的 分类 控制器 的 Menu方法*@
-            @*@Html.Action("Menu", "Categories", 
+            @Html.Action("Menu", "Categories", 
            new
        {
-               selectedCategoryId=ViewBag.SelectedCategoryId!=null?
-               ViewBag.SelectedCategoryId:0
-       })*@
+               selectedCategoryId=ViewBag.SelectedCategoryId!=null? ViewBag.SelectedCategoryId:0
+       })
         </div>
         <div class="col-lg-9">
             @RenderBody()

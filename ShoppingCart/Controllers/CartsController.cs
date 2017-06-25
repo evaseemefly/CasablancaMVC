@@ -36,11 +36,11 @@ namespace ShoppingCart.Controllers
         {
             var cart = _cartService.GetBySessionId(HttpContext.Session.SessionID);
             //放在构造函数中会出问题
-            //AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
+            AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
             // AutoMapper.Mapper.DynamicMap<Cart, CartViewModel>(cart);
 
             //Mapper.Initialize(cfg => cfg.CreateMap<Cart, CartViewModel>());
-            var dto = Mapper.Map<Cart>(cart);
+            var dto = Mapper.Map<Cart,CartViewModel>(cart);
             //or
             // var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
             //var mapper = config.CreateMapper();
@@ -48,12 +48,10 @@ namespace ShoppingCart.Controllers
             //var mapper = new Mapper(config);
             //OrderDto dto = mapper.Map<OrderDto>(order);
             // or
-           
+            //以以下这种方式会有错
+            //var model = AutoMapper.Mapper.Map<Cart, CartViewModel>(cart);
 
-
-            var model = AutoMapper.Mapper.Map<Cart, CartViewModel>(cart);
-
-            return PartialView(model);
+            return PartialView(dto);
         }
 
         protected override void Dispose(bool disposing)

@@ -21,6 +21,7 @@ namespace ShoppingCart.Controllers
             return View();
         }
 
+        [ChildActionOnly]
         public PartialViewResult Menu(int selectedCategoryId)
         {
             var categories = _categoryService.Get();
@@ -29,7 +30,17 @@ namespace ShoppingCart.Controllers
 
             ViewBag.SelectedCategoryId = selectedCategoryId;
 
-            return PartialView(AutoMapper.Mapper.Map<Category>())
+            var model = AutoMapper.Mapper.Map<List<Category>, List<CategoryViewModel>>(categories);
+            return PartialView(model);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _categoryService.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

@@ -38,9 +38,9 @@ namespace ShoppingCart.Controllers
             //放在构造函数中会出问题
             AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
             // AutoMapper.Mapper.DynamicMap<Cart, CartViewModel>(cart);
-
             //Mapper.Initialize(cfg => cfg.CreateMap<Cart, CartViewModel>());
             var dto = Mapper.Map<Cart,CartViewModel>(cart);
+            #region 暂时注释掉
             //or
             // var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
             //var mapper = config.CreateMapper();
@@ -51,6 +51,7 @@ namespace ShoppingCart.Controllers
             //以以下这种方式会有错
             //var model = AutoMapper.Mapper.Map<Cart, CartViewModel>(cart);
 
+            #endregion
             return PartialView(dto);
         }
 

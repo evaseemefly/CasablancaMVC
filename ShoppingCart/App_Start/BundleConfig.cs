@@ -8,7 +8,7 @@ namespace ShoppingCart
         // 有关绑定的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/shoppingCart").Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery.validate*", "~/Scripts/bootstrap.js", "~/Scripts/respond.js", "~/Scripts/knockout-3.4.2.debug.js"));
+            bundles.Add(new ScriptBundle("~/bundles/shoppingCart").Include("~/Scripts/jquery-{version}.js", "~/Scripts/jquery.validate*", "~/Scripts/bootstrap.js", "~/Scripts/respond.js", "~/Scripts/knockout-3.4.2.debug.js","~/Scripts/knockout.custom.js"/*,"~/Scripts/ViewModels/CartSummaryViewModel.js"*/));
             //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
             //            "~/Scripts/jquery-{version}.js"));
 

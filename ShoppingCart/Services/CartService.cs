@@ -11,6 +11,7 @@ namespace ShoppingCart.Services
 {
     public class CartService:IDisposable
     {
+        
         //数据上下文对象——此处可继续修改为单例模式创建（或线程中唯一）
         private ShoppingCartContext _db = new ShoppingCartContext();
 
@@ -35,9 +36,10 @@ namespace ShoppingCart.Services
         /// <returns></returns>
         public Cart CreateCartIfItDoesntExist(string sessionId,Cart cart)
         {
-            //此时cart不适用ref与out的原因
+            //此时cart不使用ref与out的原因
             if (null == cart)
             {
+                //注意此处创建的购物车中保存了SessionId（可使用memcache单独保存缓存）
                 cart = new Cart
                 {
                     SessionId = sessionId,

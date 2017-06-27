@@ -13,6 +13,10 @@ namespace ShoppingCart.Services
     {
         private ShoppingCartContext _db = new ShoppingCartContext();
 
+        /// <summary>
+        /// 找到喜欢的图书
+        /// </summary>
+        /// <returns></returns>
         public List<Book> GetFeatured()
         {
             return _db.Books.

@@ -40,10 +40,32 @@ namespace ShoppingCart.Controllers
     
 
         }
-        // GET: Books
-        public ActionResult Index()
+
+        public ActionResult Details(int id)
         {
-            return View();
+            var book = _bookService.GetById(id);
+            var book_dto = mapper.Map<Book, BookViewModel>(book);
+            return View(book_dto);
+        }
+
+        // GET: Books
+        public ActionResult Index(int categoryId)
+        {
+            var books = _bookService.GetByCategoryId(categoryId);
+            ViewBag.SelectedCategoryId = categoryId;
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<Author, AuthorViewModel>();
+            //    cfg.CreateMap<Book, BookViewModel>();
+            //    cfg.CreateMap<Category, CategoryViewModel>();
+            //});
+            //mapper = config.CreateMapper();
+
+            var list_ViewModel = mapper.Map<List<Book>, List<BookViewModel>>(books);
+
+            return View(list_ViewModel);
+
+            //return View();
         }
 
         /// <summary>

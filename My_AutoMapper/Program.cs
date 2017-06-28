@@ -56,12 +56,12 @@ namespace My_AutoMapper
             };
             //初始化Mapper的方式一
             //使用静态Mapper进行初始化（Initialize）
-            Mapper.Initialize(c => c.CreateMap<Book, BookViewModel>());
-            Mapper.Initialize(c => c.CreateMap<Author, AuthorViewModel>());
-            Mapper.Initialize(c => c.CreateMap<Category, CategoryViewModel>());
-            var dto_author = Mapper.Map<Author, AuthorViewModel>(author);
-            //使用此种方式会报错
-            var dto_book = Mapper.Map<Book, BookViewModel>(book);
+            //Mapper.Initialize(c => c.CreateMap<Book, BookViewModel>());
+            //Mapper.Initialize(c => c.CreateMap<Author, AuthorViewModel>());
+            //Mapper.Initialize(c => c.CreateMap<Category, CategoryViewModel>());
+            //var dto_author = Mapper.Map<Author, AuthorViewModel>(author);
+            ////使用此种方式会报错
+            //var dto_book = Mapper.Map<Book, BookViewModel>(book);
 
             //初始化Mapper的方式二
             //实例化MapperConfiguration的方式

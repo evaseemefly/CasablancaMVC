@@ -18,22 +18,23 @@
             @*thumbnail为缩略图*@
             <a href="@Url.Action("Details","Books",new {book.Id})" class="thumbnail">
                 <img src="@book.ImageUrl" alt="@book.Title" title="@book.Title" />
-                <span class="label label-success">存储 @book.SavePercentage %</span>
+                <span class="label label-success">打折 @book.SavePercentage %</span>
             </a>
             <h4>
                 <a href="@Url.Action("Details","Books",new {book.Id})">
                     @book.Title
                 </a>
             </h4>
+            <p>@book.Author.FullName</p>
+            <p>你的价格：$@book.SalePrice</p>
+            <p>
+                @*text-decoration 属性规定添加到文本的修饰。*@
+                @*line-through	定义穿过文本下的一条线。*@
+                全部价格:<span style="text-decoration:line-through">
+                    $@book.ListPrice
+                </span>
+            </p>
         </div>
-        <p>@book.Author.FullName</p>
-        <p>你的价格：$@book.SalePrice</p>
-        <p>
-            @*text-decoration 属性规定添加到文本的修饰。*@
-            @*line-through	定义穿过文本下的一条线。*@
-            全部价格:<span style="text-decoration:line-through">
-            $@book.ListPrice
-            </span>
-        </p>
+        
     }
 </div>

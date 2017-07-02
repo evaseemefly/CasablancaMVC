@@ -15,6 +15,23 @@
 
     self.cart.total = self.cart.cartItems.total();
 
+    self.updateCartItem = function (cartItem) {
+        var isNewItem = true;
+
+        for (var i = 0; i < self.cart.cartItems().length; i++) {
+            if (self.cart.cartItems()[i].id == cartItem.id) {
+                self.cart.cartItems()[i].quantity(cartItem.quantity);
+                isNewItem = false;
+                break;
+            }
+        }
+
+        if (isNewItem) {
+            cartItem.quantity = ko.observable(cartItem.quantity).extend({ subTotal: cartItem.book.salePrice });
+            self.cart.cartItems.push(cartItem);
+        }
+    };
+
     self.showCart = function () {
         $("#cart").popover("toggle");
     };
@@ -45,7 +62,7 @@
 
 };
 
-if (cartSummaryData != undefined) {
+if (cartSummaryData !== undefined) {
     var cartSummaryViewModel = new CartSummaryViewModel(cartSummaryData);
 
     ko.applyBindings(cartSummaryViewModel, document.getElementById("cart-details"));

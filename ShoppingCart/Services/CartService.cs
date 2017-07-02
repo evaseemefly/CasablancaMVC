@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using ShoppingCart.DAL;
 using ShoppingCart.Models;
+using AutoMapper;
+using ShoppingCart.ViewModels;
 
 namespace ShoppingCart.Services
 {
@@ -14,6 +16,27 @@ namespace ShoppingCart.Services
         
         //数据上下文对象——此处可继续修改为单例模式创建（或线程中唯一）
         private ShoppingCartContext _db = new ShoppingCartContext();
+
+        public IMapper mapper = null;
+
+        public CartService()
+        {
+            if (mapper == null)
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<Author, AuthorViewModel>();
+                    cfg.CreateMap<Book, BookViewModel>();
+                    cfg.CreateMap<Category, CategoryViewModel>();
+
+                    cfg.CreateMap<CartItemViewModel, CartItem>();
+                    cfg.CreateMap<BookViewModel, Book>();
+                    cfg.CreateMap<AuthorViewModel, Author>();
+                    cfg.CreateMap<CategoryViewModel, Category>();
+                });
+                mapper = config.CreateMapper();
+            }
+        }
 
         public Cart GetBySessionId(string sessionId)
         {

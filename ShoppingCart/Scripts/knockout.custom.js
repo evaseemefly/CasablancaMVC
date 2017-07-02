@@ -1,4 +1,33 @@
-﻿ko.extenders.subTotal = function (target, mulptiplier) {
+﻿//ko.bindingHandlers.isDirty = {
+//    //要绑定的元素、要绑定的属性、该元素上的所有其他绑定、viewModel（已被弃用）、绑定上下文
+//    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+//        var originalValue = ko.unwrap(valueAccessor());
+//        var interceptor = ko.pureComputed(function () {
+//            return (bindingContext.$data.showButton != underfined && bindingContext.$data.showButton) || originalValue != valueAccessor()();
+//        });
+
+//        ko.applyBindingsToNode(element, {
+//            visible: interceptor
+//        });
+//    }
+//}
+ko.bindingHandlers.isDirty = {
+    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {        
+        var originalValue = ko.unwrap(valueAccessor());
+
+        var interceptor = ko.pureComputed(function () {
+            return (bindingContext.$data.showButton !== undefined && bindingContext.$data.showButton)
+                    || originalValue != valueAccessor()();
+        });
+
+        ko.applyBindingsToNode(element, {
+            visible: interceptor
+        });
+    }
+};
+
+
+ko.extenders.subTotal = function (target, mulptiplier) {
     target.subTotal = ko.observable();
 
     function calculateTotal(newValue) {

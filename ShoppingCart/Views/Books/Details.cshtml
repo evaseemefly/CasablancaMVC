@@ -19,17 +19,21 @@
         <p class="label label-success" >保存 @Model.SavePercentage %</p>
         <p>@Model.Description</p>
     </div>
-    <div class="col-md-2 col-md-offset-2 bg-info">
+    @*<div class="col-md-2 col-md-offset-2 bg-info">
         <upsert-cart-item params="cartItem:cartItem,showButton:true">
 
         </upsert-cart-item>
+    </div>*@
+    <div class="col-md-2 col-md-offset-2 bg-info">
+        <upsert-cart-item params="cartItem: cartItem, showButton: true"></upsert-cart-item>
     </div>
 </div>
 
-@*@Html.Partial("_CartItemForm")*@
+@Html.Partial("_CartItemForm")
 
 @section Scripts{
-    @Scripts.Render("~/Scripts/ViewModels/BookDetailViewModel.js", "~/Scripts/ViewModels/CartSummaryViewModel.js")
+    @Scripts.Render("~/Scripts/ViewModels/BookDetailViewModel.js",
+        "~/Scripts/ViewModels/CartItemViewModel.js")
 <script>
     var model=@Html.HtmlConvertToJson(Model);
     var bookDetailViewModel=new BookDetailViewModel(model);

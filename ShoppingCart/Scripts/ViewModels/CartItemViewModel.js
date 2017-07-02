@@ -53,10 +53,10 @@
             $('.body-content').prepend(msg + '这个对象添加至你的购物车.</div>');
         };
 
-    };
-
-    ko.components.register('upsert-cart-item', {
-        viewModel: CartItemViewModel,
-        template: { element: 'cart-item-form' }
-    });
+    };   
 }
+
+ko.components.register('upsert-cart-item', {
+    viewModel: CartItemViewModel,
+    template: { element: 'cart-item-form' }
+});

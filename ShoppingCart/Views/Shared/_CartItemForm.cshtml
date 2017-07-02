@@ -4,15 +4,11 @@
 <template id="cart-item-form">
     <form class="center-block" data-bind="submit:upsertCartItem">
         <div class="form-group">
-            @Html.LabelFor(m=>cartItem.Quantity)
+            @Html.LabelFor(m => cartItem.Quantity)
             <div class="input-group form-group-sm">
                 <div class="col-sm-8">
-                    @Html.TextBoxFor(m=>cartItem.Quantity,new
-               {
-                   data_bind="textInput:cartItem.Quantity",
-                   @class="form-control"
-               })
-                    @Html.ValidationMessageFor(m => cartItem.Quantity, "", new { @class="text-danger"})
+                    @Html.TextBoxFor(m => cartItem.Quantity, new { data_bind = "textInput: cartItem.quantity", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => cartItem.Quantity, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

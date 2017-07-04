@@ -12,14 +12,18 @@
 //    }
 //}
 ko.bindingHandlers.isDirty = {
-    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {        
+    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+        //ko.unwrap=unwrapObservable
+        //首先将quantity的值保存到一个变量中
         var originalValue = ko.unwrap(valueAccessor());
 
+        //决定提交按钮的显示和隐藏状态
         var interceptor = ko.pureComputed(function () {
             return (bindingContext.$data.showButton !== undefined && bindingContext.$data.showButton)
                     || originalValue != valueAccessor()();
         });
 
+        //拓展了visible绑定
         ko.applyBindingsToNode(element, {
             visible: interceptor
         });

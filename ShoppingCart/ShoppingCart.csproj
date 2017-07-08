@@ -292,6 +292,7 @@
     <Content Include="Views\Shared\_CartItemForm.cshtml" />
     <Content Include="Views\Shared\_CartItemForm1.cshtml" />
     <Content Include="Views\Books\Details-1.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

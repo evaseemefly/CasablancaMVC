@@ -14,7 +14,9 @@ namespace ShoppingCart.Controllers
     {
         private readonly CartService _cartService = new CartService();
 
-        static CartsController()
+        public IMapper mapper = null;
+
+        public CartsController()
         {
             //创建实体=>ViewModel的映射关系（初始化）
             //var config = new MapperConfiguration(cfg => cfg.CreateMap<Cart, CartViewModel>());
@@ -23,11 +25,22 @@ namespace ShoppingCart.Controllers
             //new MapperConfiguration(c => c.CreateMap<Cart, CartViewModel>()).CreateMapper();
             //若在构造函数中初始化AutoMapper，在action中会出现如下错误:
             //Missing type map configuration or unsupported mapping
-            AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
-            AutoMapper.Mapper.Initialize(c => c.CreateMap<CartItem, CartItemViewModel>());
-            AutoMapper.Mapper.Initialize(c => c.CreateMap<Book, BookViewModel>());
-            AutoMapper.Mapper.Initialize(c => c.CreateMap<Category, CategoryViewModel>());
 
+            //AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
+            //AutoMapper.Mapper.Initialize(c => c.CreateMap<CartItem, CartItemViewModel>());
+            //AutoMapper.Mapper.Initialize(c => c.CreateMap<Book, BookViewModel>());
+            //AutoMapper.Mapper.Initialize(c => c.CreateMap<Category, CategoryViewModel>());
+            if (mapper == null)
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<Author, AuthorViewModel>();
+                    cfg.CreateMap<Book, BookViewModel>();
+                    cfg.CreateMap<Category, CategoryViewModel>();
+                    cfg.CreateMap<Cart, CartViewModel>();
+                });
+                mapper = config.CreateMapper();
+            }
 
         }
 
@@ -36,10 +49,11 @@ namespace ShoppingCart.Controllers
         {
             var cart = _cartService.GetBySessionId(HttpContext.Session.SessionID);
             //放在构造函数中会出问题
-            AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
+            //AutoMapper.Mapper.Initialize(c => c.CreateMap<Cart, CartViewModel>());
             // AutoMapper.Mapper.DynamicMap<Cart, CartViewModel>(cart);
             //Mapper.Initialize(cfg => cfg.CreateMap<Cart, CartViewModel>());
-            var dto = Mapper.Map<Cart,CartViewModel>(cart);
+            var dto=mapper.Map<Cart, CartViewModel>(cart);
+            //var dto = Mapper.Map<Cart,CartViewModel>(cart);
             #region 暂时注释掉
             //or
             // var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDto>());
@@ -68,7 +82,9 @@ namespace ShoppingCart.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-            return View();
+            var cart = _cartService.GetBySessionId(HttpContext.Session.SessionID);
+            return View(mapper.Map<Cart, CartViewModel>(cart));
+            //return View();
         }
     }
 }

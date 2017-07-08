@@ -52,6 +52,9 @@ namespace ShoppingCart.Controllers.Api
         // POST api/<controller>
         public CartItemViewModel Post(CartItemViewModel cartItem)
         {
+            //注意此处的AutoMapper实现了双向映射
+            //因为传入的CartItemViewModel——>CartItem
+            //CartItem——>CartItemViewModel
             var newCartItem = _cartItemService.Add2Cart(mapper.Map < CartItemViewModel, CartItem>(cartItem));
             return mapper.Map<CartItem, CartItemViewModel>(newCartItem);
         }

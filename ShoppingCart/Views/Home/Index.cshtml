@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>购物车</h1>
+    <p class="lead">你喜欢的书又降价啦</p>
+    <p>
+        <a href="@Url.Action("About") class="btn btn-primary btn-lg">Learn more &raquo;</a>
+    </p>
+</div>
+
+@Html.Action("Featured","Books")

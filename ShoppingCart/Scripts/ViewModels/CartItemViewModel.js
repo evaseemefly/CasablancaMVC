@@ -22,7 +22,7 @@
         };
         //ajax执行请求
         $.ajax({
-            url: '/api/caritems',
+            url: '/Api/CartItems',
             type: self.cartItem.id == undefined ? 'post' : 'put',
             contentType: 'application/json',
             data: ko.toJSON(data)
@@ -41,7 +41,7 @@
             $('.body-content').prepend(msg + '你的购物车.</div>');
             self.cartItem.id = data.id;
 
-            cartSummaryViewModel.updateCartItem(ko.toJSON(self.cartItem));
+            cartSummaryViewModel.updateCartItem(ko.toJS(self.cartItem));
         }
 
         self.errorSave = function () {

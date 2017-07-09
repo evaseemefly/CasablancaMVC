@@ -41,7 +41,7 @@ ko.bindingHandlers.isDirty = {
 };
 
 
-ko.extenders.subTotal = function (target, multiplier) {
+ko.extenders.subTotal = function (target, mulptiplier) {
     target.subTotal = ko.observable();
 
     function calculateTotal(newValue) {
@@ -58,11 +58,11 @@ ko.extenders.subTotal = function (target, multiplier) {
 ko.observableArray.fn.total = function () {
     return ko.pureComputed(function () {
         var runningTotal = 0;
-
+    
         for (var i = 0; i < this().length; i++) {
             runningTotal += parseFloat(this()[i].quantity.subTotal());
         }
 
         return runningTotal.toFixed(2);
     }, this);
-};
+}

@@ -34,6 +34,18 @@ namespace ShoppingCart.Services
             return existingCartItem;
         }
 
+        public void UpdateCartItem(CartItem cartItem)
+        {
+            _db.Entry(cartItem).State = EntityState.Deleted;
+            _db.SaveChanges();
+        }
+
+        public void DeleteCartItem(CartItem cartItem)
+        {
+            _db.Entry(cartItem).State = EntityState.Deleted;
+            _db.SaveChanges();
+        }
+
         public void Dispose()
         {
             _db.Dispose();

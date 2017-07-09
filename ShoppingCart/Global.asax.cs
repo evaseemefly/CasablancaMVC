@@ -8,6 +8,8 @@ using System.Web.Routing;
 
 using ShoppingCart.DAL;
 using System.Data.Entity;
+using System.Web.Http;
+using ShoppingCart.App_Start;
 
 namespace ShoppingCart
 {
@@ -17,6 +19,7 @@ namespace ShoppingCart
         {
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 

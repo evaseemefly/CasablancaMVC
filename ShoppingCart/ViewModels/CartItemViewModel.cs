@@ -23,12 +23,10 @@ namespace ShoppingCart.ViewModels
         /// 数量
         /// </summary>
         [JsonProperty(PropertyName = "quantity")]
+        [Range(1, Int32.MaxValue, ErrorMessage = "总数必须比0大")]
         public int Quantity { get; set; }
 
-        [JsonProperty(PropertyName = "cart")]
-        [Range(1,Int32.MaxValue,ErrorMessage ="总数必须比0大")]
-        public virtual CartViewModel Cart { get; set; }
-
+       
         [JsonProperty(PropertyName = "book")]
         public virtual BookViewModel Book { get; set; }
     }

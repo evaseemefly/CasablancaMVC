@@ -16,7 +16,7 @@
             总共价格为:<span style="text-decoration:line-through">
             $@Model.ListPrice</span>
         </p>
-        <p class="label label-success" >保存 @Model.SavePercentage %</p>
+        <p class="label label-success" >节省 @Model.SavePercentage %</p>
         <p>@Model.Description</p>
     </div>
     @*<div class="col-md-2 col-md-offset-2 bg-info">
@@ -25,6 +25,7 @@
         </upsert-cart-item>
     </div>*@
     <div class="col-md-2 col-md-offset-2 bg-info">
+        @*在CartItemViewModel.js中，由于在该js文件中定义了CartItemViewModel function，并实现自定义组件的关联 使用ko.components.register(...)的方式*@
         <upsert-cart-item params="cartItem: cartItem, showButton: true"></upsert-cart-item>
     </div>
 </div>

@@ -13,10 +13,12 @@
     </span>
     <div data-bind="visible:cart.cartItems().length>0">
         <ul>
-            @*<li data-bind="text:book.title"></li>*@
+            <!--ko foreach:{data:cart.cartItems,afterAdd:fadeIn}-->
+            <li data-bind="text:book.title"></li>
+            <!--/ko-->
         </ul>
         <p><strong>总数:</strong>$<span data-bind="text:cart.total"></span></p>
-        <br /><a href="@Url.Action("Index","Carts")" class="btn btn-primary"></a>
+        <br /><a href="@Url.Action("Index","Carts")" class="btn btn-primary">查看购物车详情</a>
     </div>
 </div>
 <script>

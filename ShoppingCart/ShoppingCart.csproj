@@ -183,6 +183,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CartItemsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
@@ -238,18 +239,22 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.4.2.debug.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
+    <Content Include="Scripts\knockout.custom-backup.js" />
     <Content Include="Scripts\knockout.custom.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ViewModels\BookDetailViewModel.js" />
     <Content Include="Scripts\ViewModels\BookDetailViewModel1.js" />
+    <Content Include="Scripts\ViewModels\CartDetailViewModel.js" />
     <Content Include="Scripts\ViewModels\CartItemViewModel.js" />
     <Content Include="Scripts\ViewModels\CartItemViewModel1.js" />
+    <Content Include="Scripts\ViewModels\CartSummaryViewModel-1.js" />
     <Content Include="Scripts\ViewModels\CartSummaryViewModel.js" />
-    <Content Include="Scripts\ViewModels\CartSummaryViewModel1.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -293,6 +298,7 @@
     <Content Include="Views\Shared\_CartItemForm1.cshtml" />
     <Content Include="Views\Books\Details-1.cshtml" />
     <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Scripts\knockout.custom-source.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

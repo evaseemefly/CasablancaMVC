@@ -32,6 +32,16 @@
         }
     };
 
+    //遍历cartItems数组匹配购物项的id，找到匹配项从监控数据组删除该项
+    self.deleteCartItem = function (cartItem) {
+        for (var i = 0; i < length; i++) {
+            if (self.cart.cartItems()[i].id == cartItem.id) {
+                self.cart.cartitems.remove(self.cart.cartItems()[i]);
+                break;
+            }
+        }
+    }
+
     self.showCart = function () {
         $("#cart").popover("toggle");
     };

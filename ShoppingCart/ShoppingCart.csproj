@@ -183,6 +183,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CartItemsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
@@ -244,6 +245,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ViewModels\BookDetailViewModel.js" />
     <Content Include="Scripts\ViewModels\BookDetailViewModel1.js" />
+    <Content Include="Scripts\ViewModels\CartDetailViewModel.js" />
     <Content Include="Scripts\ViewModels\CartItemViewModel.js" />
     <Content Include="Scripts\ViewModels\CartItemViewModel1.js" />
     <Content Include="Scripts\ViewModels\CartSummaryViewModel.js" />

@@ -22,7 +22,7 @@
         };
         //ajax执行请求
         $.ajax({
-            url: '/api/caritems',
+            url: '/Api/CartItems',
             type: self.cartItem.id == undefined ? 'post' : 'put',
             contentType: 'application/json',
             data: ko.toJSON(data)

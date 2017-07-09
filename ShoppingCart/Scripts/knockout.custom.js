@@ -11,6 +11,16 @@
 //        });
 //    }
 //}
+ko.bindingHandlers.append2Href = {
+    init: function (element, valueAccessor) {
+        //使用jq将元素href的当前值保存
+        var currentHref = $(element).attr('href');
+        //将数据绑定的值附加到该值得后面
+        //在href后面拼接你所绑定的当前元素的属性的值
+        $(element).attr('href', currentHref + '/' + valueAccessor());
+    }
+}
+
 ko.bindingHandlers.isDirty = {
     init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
         //ko.unwrap=unwrapObservable

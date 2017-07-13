@@ -10,7 +10,7 @@
         //将quantity转换为一个可监控属性
         //并拓展使用之前创建的subTtotal拓展
         self.cart.cartitems[i].quantity = ko.observable(self.cart.cartItems[i].quantity)
-            .extend({ subTotal: self.cart.cartItems[i].book.salePrice });
+            .extend({ subTotal: self.cart.cartItems[i].book.salePrice });//我的理解此处相当于target是quantity,multiplier是self.cart.cartItems[i].book.salePrice
     }
 
     //将carItems设置为可监控数组

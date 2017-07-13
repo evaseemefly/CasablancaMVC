@@ -25,7 +25,7 @@
             </td>
             <td data-bind="text:'$'+quantity.subTotal()"></td>
             <td>
-                <button type="button" class="btn btn-danger" data-bind="click:$parent.deleteCartItem,visible:!parent.sending()">
+                <button type="button" class="btn btn-danger" data-bind="click:$parent.deleteCartItem,visible:!$parent.sending()">
                     <span class="glyphicon glyphicon-trash"></span>
                 </button>
             </td>

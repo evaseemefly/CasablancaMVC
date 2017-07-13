@@ -42,14 +42,18 @@ ko.bindingHandlers.isDirty = {
 
 
 ko.extenders.subTotal = function (target, multiplier) {
+    //将传入的对象的subTotal设置为可观察的
     target.subTotal = ko.observable();
 
     function calculateTotal(newValue) {
+        //toFixed为四舍五入为指定小数位数的数字
+        //targetr*multiplier，并保留2位小数
         target.subTotal((newValue * multiplier).toFixed(2));
     };
 
+    //此种方法可行吗？calculateTotal(this)
     calculateTotal(target());
-
+    //订阅
     target.subscribe(calculateTotal);
 
     return target;
